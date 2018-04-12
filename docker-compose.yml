@@ -1,0 +1,13 @@
+version: '3'
+services:
+  docker-socket-proxy:
+    container_name: docker-socket-proxy
+    image: piec/docker-socket-proxy:latest
+    #build: .
+    restart: unless-stopped
+    environment:
+      - GID=999
+    volumes:
+      - ./socket:/socket
+      - /var/run/docker.sock:/var/run/docker.sock
+
